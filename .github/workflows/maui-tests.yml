@@ -35,4 +35,4 @@ jobs:
         run: dotnet build --configuration Release --no-restore
  
       - name: Voer unit tests uit
-        run: dotnet TestHelpers --configuration Release --no-restore --no-build --verbosity normal
+        run: dotnet test --configuration Release --no-restore --no-build --verbosity normal
