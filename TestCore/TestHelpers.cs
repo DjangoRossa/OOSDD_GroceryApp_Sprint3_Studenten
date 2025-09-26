@@ -2,6 +2,7 @@ using Grocery.Core.Helpers;
 using Grocery.Core.Interfaces.Services;
 using Grocery.Core.Models;
 using Grocery.Core.Services;
+using Grocery.Core;
 
 namespace TestCore
 {
@@ -42,6 +43,35 @@ namespace TestCore
         public void TestPasswordHelperReturnsFalse(string password, string passwordHash)
         {
             Assert.IsFalse(PasswordHelper.VerifyPassword(password, passwordHash));
+        }
+
+        [Test]
+        public void TestAddProductReturnsTrue()
+        {
+            List<GroceryListItem> groceryListItems = new List<GroceryListItem>();
+            GroceryListItem product = new GroceryListItem(-1, 1, 1, 1);
+            groceryListItems.Add(product);
+            Assert.IsTrue(groceryListItems.Contains(product));
+        }
+
+        [TestCase(-1, 2, 3, 4)]
+        [TestCase(-1, 3, 4, 5)]
+        public void TestAddProductReturnsTrue(int id, int groceryListId, int productId, int amount)
+        {
+            List<GroceryListItem> groceryListItems = new List<GroceryListItem>();
+            GroceryListItem product = new GroceryListItem(id, groceryListId, productId, amount);
+            groceryListItems.Add(product);
+            Assert.IsTrue(groceryListItems.Contains(product));
+        }
+
+        [Test]
+        public void TestRemoveProductReturnsFalse()
+        {
+            List<GroceryListItem> groceryListItems = new List<GroceryListItem>();
+            GroceryListItem product = new GroceryListItem(-1, 1, 1, 1);
+            groceryListItems.Add(product);
+            groceryListItems.Remove(product);
+            Assert.IsFalse(groceryListItems.Contains(product));
         }
 
     }
