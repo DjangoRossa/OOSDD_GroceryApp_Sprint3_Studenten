@@ -7,12 +7,52 @@
              Title="ChangeColorView">
     <Shell.TitleView>
         <Grid>
-            <Label Text="{Binding GroceryList.Name}" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" />
+            <Label Text="{Binding GroceryList.Name}" 
+                   FontSize="Large" 
+                   HorizontalOptions="Center" 
+                   VerticalOptions="Center" />
         </Grid>
     </Shell.TitleView>
-
-    <VerticalStackLayout>
+    <VerticalStackLayout Padding="10" Spacing="10">
+        <Grid ColumnDefinitions="*,*,*"
+              RowDefinitions="Auto,Auto"
+              HorizontalOptions="Center"
+              ColumnSpacing="10"
+              RowSpacing="10">
+            <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="Red" WidthRequest="50" HeightRequest="50" CornerRadius="25">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ChangeColorCommand}" CommandParameter="Red"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+            <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="Green" WidthRequest="50" HeightRequest="50" CornerRadius="25">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ChangeColorCommand}" CommandParameter="Green"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+            <Frame Grid.Row="0" Grid.Column="2" BackgroundColor="Blue" WidthRequest="50" HeightRequest="50" CornerRadius="25">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ChangeColorCommand}" CommandParameter="Blue"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+            <Frame Grid.Row="1" Grid.Column="0" BackgroundColor="Yellow" WidthRequest="50" HeightRequest="50" CornerRadius="25">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ChangeColorCommand}" CommandParameter="Yellow"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+            <Frame Grid.Row="1" Grid.Column="1" BackgroundColor="Orange" WidthRequest="50" HeightRequest="50" CornerRadius="25">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ChangeColorCommand}" CommandParameter="Orange"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+            <Frame Grid.Row="1" Grid.Column="2" BackgroundColor="Purple" WidthRequest="50" HeightRequest="50" CornerRadius="25">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ChangeColorCommand}" CommandParameter="Purple"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+        </Grid>
         <Editor Text="{Binding GroceryList.Color}" x:Name="newColor"/>
-        <Button Text="Wijzig kleur" Command="{Binding ChangeColorCommand}" CommandParameter="{Binding Source={x:Reference newColor}, Path=Text}" />
+        <Button Text="Wijzig kleur"
+                Command="{Binding ChangeColorCommand}"
+                CommandParameter="{Binding Source={x:Reference newColor}, Path=Text}" />
     </VerticalStackLayout>
 </ContentPage>

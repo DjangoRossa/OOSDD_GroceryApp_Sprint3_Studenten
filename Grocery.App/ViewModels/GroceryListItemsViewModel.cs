@@ -86,5 +86,14 @@ namespace Grocery.App.ViewModels
             }
         }
 
+        [RelayCommand]
+        public void SearchProduct(string searchInput)
+        {
+            AvailableProducts.Clear();
+            foreach (Product p in _productService.GetAll())
+                if (MyGroceryListItems.FirstOrDefault(g => g.ProductId == p.Id) == null && p.Stock > 0 && p.Name.Contains(searchInput))
+                    AvailableProducts.Add(p);
+        }
+
     }
 }
